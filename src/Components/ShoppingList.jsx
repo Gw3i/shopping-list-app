@@ -5,15 +5,23 @@ import { useState } from "react";
 import { items } from "../data";
 
 export default function ShoppingList() {
-  const [shoppingItem, setShoppingItem] = useState(items);
+  const [shoppingItems, setShoppingItems] = useState(items);
 
   return (
     <UnorderedList>
-      {shoppingItem.map((item) => {
+      {shoppingItems.map((item) => {
         console.log(item);
         return (
           <ListItem key={item._id}>
-            <ListTag>{item.name.de}</ListTag>
+            <ListTag
+              onClick={() => {
+                setShoppingItems(
+                  shoppingItems.filter((item_) => item_._id !== item._id)
+                );
+              }}
+            >
+              {item.name.de}
+            </ListTag>
           </ListItem>
         );
       })}
