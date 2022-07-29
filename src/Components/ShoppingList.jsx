@@ -14,10 +14,9 @@ export default function ShoppingList() {
     fetchProductList("https://fetch-me.vercel.app/api/shopping/items");
   }, [fetchProductList]);
 
-  console.log(shoppingItems.data);
   return (
     <UnorderedList>
-      {shoppingItems.data.map((item) => {
+      {shoppingItems.map((item) => {
         return (
           <ListItem key={item._id}>
             <ListTag

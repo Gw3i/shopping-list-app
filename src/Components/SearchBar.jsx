@@ -9,7 +9,6 @@ export default function SearchBar({ labelFor, labelText, placeholder, type }) {
 
   const createShoppingItems = useStore((state) => state.createShoppingItems);
 
-  console.log(inputValue);
   return (
     <Form
       onSubmit={(event) => {
