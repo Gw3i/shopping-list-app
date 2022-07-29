@@ -16,7 +16,7 @@ function App() {
           labelFor="whatShopping"
           labelText="Was willst du einkaufen?"
           placeholder="Tippe um zu suchen..."
-          type="text"
+          type="search"
         />
       </Main>
     </>

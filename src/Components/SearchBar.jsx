@@ -4,12 +4,25 @@ import Input from "./Input";
 import { useState } from "react";
 import useStore from "./useStore";
 import SearchSuggest from "./SearchSuggest";
+import { search } from "fast-fuzzy";
 
 export default function SearchBar({ labelFor, labelText, placeholder, type }) {
   const [inputValue, setInputValue] = useState("");
-
   const createShoppingItems = useStore((state) => state.createShoppingItems);
-  console.log(inputValue);
+  const fetchedProductItems = useStore((state) => state.fetchedProductItems);
+
+  //////////// Fuzzy Search
+
+  const { search } = require("fast-fuzzy");
+
+  function fuzzySearch(inputValue) {
+    let fuzzyResult = search(inputValue, fetchedProductItems.data, {
+      keySelector: (obj) => obj.name.de,
+    });
+    return fuzzyResult;
+  }
+
+  fuzzySearch(inputValue);
   return (
     <>
       <Form
@@ -28,6 +41,7 @@ export default function SearchBar({ labelFor, labelText, placeholder, type }) {
           value={inputValue}
           onChange={(event) => {
             setInputValue(event.target.value);
+            fuzzySearch(inputValue);
           }}
         />
       </Form>
