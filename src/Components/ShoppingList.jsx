@@ -4,8 +4,14 @@ import ListTag from "./ListTag";
 import { useState } from "react";
 import { items } from "../data";
 
+
 export default function ShoppingList() {
   const [shoppingItems, setShoppingItems] = useState(items);
+
+  function handleSearch() {
+    setShoppingItems([...shoppingItems, {_id: }])
+  }
+
 
   return (
     <UnorderedList>
