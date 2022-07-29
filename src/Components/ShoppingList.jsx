@@ -1,19 +1,26 @@
 import UnorderedList from "./UnorderedList";
 import ListItem from "./ListItem";
 import ListTag from "./ListTag";
-import { useState } from "react";
-import { items } from "../data";
+import useStore from "./useStore";
 
 export default function ShoppingList() {
-  const [shoppingItem, setShoppingItem] = useState(items);
+  // const [shoppingItems_, setShoppingItems_] = useState(items);
+  const shoppingItems = useStore((state) => state.shoppingItems);
+  const deleteListItems = useStore((state) => state.deleteListItems);
 
   return (
     <UnorderedList>
-      {shoppingItem.map((item) => {
-        console.log(item);
+      {shoppingItems.map((item) => {
         return (
           <ListItem key={item._id}>
-            <ListTag>{item.name.de}</ListTag>
+            <ListTag
+              onClick={() => {
+                console.log(item._id);
+                deleteListItems(item._id);
+              }}
+            >
+              {item.name.de}
+            </ListTag>
           </ListItem>
         );
       })}
