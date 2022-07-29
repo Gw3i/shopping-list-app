@@ -15,6 +15,7 @@ export default function SearchBar({ labelFor, labelText, placeholder, type }) {
       onSubmit={(event) => {
         event.preventDefault();
         createShoppingItems(inputValue);
+        setInputValue("");
       }}
     >
       <Label htmlFor={labelFor}>{labelText}</Label>

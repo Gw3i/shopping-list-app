@@ -6,7 +6,6 @@ import useStore from "./useStore";
 export default function ShoppingList() {
   // const [shoppingItems_, setShoppingItems_] = useState(items);
   const shoppingItems = useStore((state) => state.shoppingItems);
-  const createShoppingItems = useStore((state) => state.createShoppingItems);
   const deleteListItems = useStore((state) => state.deleteListItems);
 
   return (
