@@ -3,6 +3,7 @@ import Titel from "./Components/Titel";
 import Main from "./Components/Main";
 import ShoppingList from "./Components/ShoppingList";
 import SearchBar from "./Components/SearchBar";
+import SearchSuggest from "./Components/SearchSuggest";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           placeholder="Tippe um zu suchen..."
           type="text"
         />
+        <SearchSuggest />
       </Main>
     </>
   );
