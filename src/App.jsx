@@ -18,7 +18,6 @@ function App() {
           placeholder="Tippe um zu suchen..."
           type="text"
         />
-        <SearchSuggest />
       </Main>
     </>
   );
