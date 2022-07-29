@@ -4,7 +4,6 @@ import ListTag from "./ListTag";
 import useStore from "./useStore";
 
 export default function ShoppingList() {
-  // const [shoppingItems_, setShoppingItems_] = useState(items);
   const shoppingItems = useStore((state) => state.shoppingItems);
   const deleteListItems = useStore((state) => state.deleteListItems);
 

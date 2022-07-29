@@ -1,10 +1,19 @@
 import { nanoid } from "nanoid";
 import create from "zustand";
-import { items } from "../data";
 
 const useStore = create((set) => {
   return {
-    shoppingItems: items,
+    fetchedProductItems: { data: [] },
+    fetchProductList: async (url) => {
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        set({ fetchedProductItems: data });
+      } catch (error) {
+        console.error(`Ups, fetchning went wrong: ${error}`);
+      }
+    },
+    shoppingItems: [],
     createShoppingItems: (name) => {
       set((state) => {
         return {
