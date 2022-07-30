@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const UnorderedList = styled.ul`
+const StyledUnorderedList = styled.ul`
   list-style: none;
   padding: 0;
   display: flex;
@@ -8,4 +8,4 @@ const UnorderedList = styled.ul`
   gap: 5px;
 `;
 
-export default UnorderedList;
+export default StyledUnorderedList;

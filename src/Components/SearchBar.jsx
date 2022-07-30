@@ -1,33 +1,45 @@
-import Form from "./Form";
-import Label from "./Label";
-import Input from "./Input";
+import StyledForm from "./StyledForm";
+import StyledLabel from "./StyledLabel";
+import StyledInput from "./StyledInput";
 import { useState } from "react";
 import useStore from "./useStore";
+import SearchSuggest from "./SearchSuggest";
+
+const { search } = require("fast-fuzzy");
 
 export default function SearchBar({ labelFor, labelText, placeholder, type }) {
   const [inputValue, setInputValue] = useState("");
-
   const createShoppingItems = useStore((state) => state.createShoppingItems);
+  const fetchedProductItems = useStore((state) => state.fetchedProductItems);
+
+  const fuzzyResults = search(inputValue, fetchedProductItems.data, {
+    keySelector: (obj) => obj.name.de,
+  });
+
+  //////////// Fuzzy Search
 
   return (
-    <Form
-      onSubmit={(event) => {
-        event.preventDefault();
-        createShoppingItems(inputValue);
-        setInputValue("");
-      }}
-    >
-      <Label htmlFor={labelFor}>{labelText}</Label>
-      <Input
-        name={labelFor}
-        id={labelFor}
-        type={type}
-        placeholder={placeholder}
-        value={inputValue}
-        onChange={(event) => {
-          setInputValue(event.target.value);
+    <>
+      <StyledForm
+        onSubmit={(event) => {
+          event.preventDefault();
+          createShoppingItems(inputValue);
+          setInputValue("");
         }}
-      />
-    </Form>
+      >
+        <StyledLabel htmlFor={labelFor}>{labelText}</StyledLabel>
+        <StyledInput
+          name={labelFor}
+          id={labelFor}
+          type={type}
+          placeholder={placeholder}
+          value={inputValue}
+          onChange={(event) => {
+            setInputValue(event.target.value);
+          }}
+        />
+      </StyledForm>
+      <SearchSuggest inputValue={inputValue} fuzzyResults={fuzzyResults} />
+    </>
   );
 }
