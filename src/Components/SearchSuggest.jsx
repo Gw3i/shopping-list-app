@@ -1,12 +1,11 @@
 import useStore from "./useStore";
 import { useEffect } from "react";
-import UnorderedList from "./StyledUnorderedList";
+import StyledUnorderedList from "./StyledUnorderedList";
 import StyledListItem from "./StyledListItem";
 import StyledListButton from "./StyledListButton";
 
-export default function SearchSuggest({ inputValue, fuzzyResults }) {
+export default function SearchSuggest({ fuzzyResults, onInputValueReset }) {
   const fetchProductList = useStore((state) => state.fetchProductList);
-  const fetchedProductItems = useStore((state) => state.fetchedProductItems);
   const createShoppingItems = useStore((state) => state.createShoppingItems);
 
   useEffect(() => {
@@ -14,20 +13,14 @@ export default function SearchSuggest({ inputValue, fuzzyResults }) {
   }, [fetchProductList]);
 
   return (
-    <UnorderedList>
-      {/* {fetchedProductItems.data
-        .filter((item) => {
-          return inputValue.toLowerCase() === ""
-            ? item
-            : item.name.de.toLowerCase().includes(inputValue);
-        }) */}
-
+    <StyledUnorderedList>
       {fuzzyResults.map((item) => {
         return (
           <StyledListItem key={item._id}>
             <StyledListButton
               onClick={() => {
                 createShoppingItems(item.name.de);
+                onInputValueReset();
               }}
             >
               {item.name.de}
@@ -35,6 +28,6 @@ export default function SearchSuggest({ inputValue, fuzzyResults }) {
           </StyledListItem>
         );
       })}
-    </UnorderedList>
+    </StyledUnorderedList>
   );
 }

@@ -26,7 +26,6 @@ const useStore = create((set) => {
     },
     deleteListItems: (id) => {
       set((state) => {
-        console.log(state.shoppingItems);
         return {
           shoppingItems: state.shoppingItems.filter(
             (listItem) => listItem._id !== id
