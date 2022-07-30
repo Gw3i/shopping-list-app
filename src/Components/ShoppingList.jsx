@@ -1,6 +1,6 @@
-import UnorderedList from "./UnorderedList";
-import ListItem from "./ListItem";
-import ListTag from "./ListTag";
+import UnorderedList from "./StyledUnorderedList";
+import StyledListItem from "./StyledListItem";
+import StyledListButton from "./StyledListButton";
 import useStore from "./useStore";
 
 export default function ShoppingList() {
@@ -11,16 +11,16 @@ export default function ShoppingList() {
     <UnorderedList>
       {shoppingItems.map((item) => {
         return (
-          <ListItem key={item._id}>
-            <ListTag
+          <StyledListItem key={item._id}>
+            <StyledListButton
               onClick={() => {
                 console.log(item._id);
                 deleteListItems(item._id);
               }}
             >
               {item.name.de}
-            </ListTag>
-          </ListItem>
+            </StyledListButton>
+          </StyledListItem>
         );
       })}
     </UnorderedList>

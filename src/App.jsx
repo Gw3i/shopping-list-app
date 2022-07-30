@@ -1,15 +1,14 @@
 import GlobalStyle from "./GlobalStyle";
-import Titel from "./Components/Titel";
-import Main from "./Components/Main";
+import Titel from "./Components/StyledTitel";
+import StyledMain from "./Components/StyledMain";
 import ShoppingList from "./Components/ShoppingList";
 import SearchBar from "./Components/SearchBar";
-import SearchSuggest from "./Components/SearchSuggest";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <Main>
+      <StyledMain>
         <Titel>Einkaufsliste</Titel>
         <ShoppingList />
         <SearchBar
@@ -18,7 +17,7 @@ function App() {
           placeholder="Tippe um zu suchen..."
           type="search"
         />
-      </Main>
+      </StyledMain>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ListTag = styled.button`
+const StyledListButton = styled.button`
   border-radius: 8px;
   border: none;
   padding: 10px 20px;
@@ -8,4 +8,4 @@ const ListTag = styled.button`
   font-size: 1rem;
 `;
 
-export default ListTag;
+export default StyledListButton;

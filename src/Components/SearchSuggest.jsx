@@ -1,8 +1,8 @@
 import useStore from "./useStore";
 import { useEffect } from "react";
-import UnorderedList from "./UnorderedList";
-import ListItem from "./ListItem";
-import ListTag from "./ListTag";
+import UnorderedList from "./StyledUnorderedList";
+import StyledListItem from "./StyledListItem";
+import StyledListButton from "./StyledListButton";
 
 export default function SearchSuggest({ inputValue, fuzzyResults }) {
   const fetchProductList = useStore((state) => state.fetchProductList);
@@ -24,15 +24,15 @@ export default function SearchSuggest({ inputValue, fuzzyResults }) {
 
       {fuzzyResults.map((item) => {
         return (
-          <ListItem key={item._id}>
-            <ListTag
+          <StyledListItem key={item._id}>
+            <StyledListButton
               onClick={() => {
                 createShoppingItems(item.name.de);
               }}
             >
               {item.name.de}
-            </ListTag>
-          </ListItem>
+            </StyledListButton>
+          </StyledListItem>
         );
       })}
     </UnorderedList>

@@ -1,10 +1,9 @@
-import Form from "./Form";
-import Label from "./Label";
-import Input from "./Input";
+import StyledForm from "./StyledForm";
+import StyledLabel from "./StyledLabel";
+import StyledInput from "./StyledInput";
 import { useState } from "react";
 import useStore from "./useStore";
 import SearchSuggest from "./SearchSuggest";
-// import { fuzzy, search } from "fast-fuzzy";
 
 const { search } = require("fast-fuzzy");
 
@@ -13,7 +12,7 @@ export default function SearchBar({ labelFor, labelText, placeholder, type }) {
   const createShoppingItems = useStore((state) => state.createShoppingItems);
   const fetchedProductItems = useStore((state) => state.fetchedProductItems);
 
-  let fuzzyResults = search(inputValue, fetchedProductItems.data, {
+  const fuzzyResults = search(inputValue, fetchedProductItems.data, {
     keySelector: (obj) => obj.name.de,
   });
 
@@ -21,15 +20,15 @@ export default function SearchBar({ labelFor, labelText, placeholder, type }) {
 
   return (
     <>
-      <Form
+      <StyledForm
         onSubmit={(event) => {
           event.preventDefault();
           createShoppingItems(inputValue);
           setInputValue("");
         }}
       >
-        <Label htmlFor={labelFor}>{labelText}</Label>
-        <Input
+        <StyledLabel htmlFor={labelFor}>{labelText}</StyledLabel>
+        <StyledInput
           name={labelFor}
           id={labelFor}
           type={type}
@@ -39,7 +38,7 @@ export default function SearchBar({ labelFor, labelText, placeholder, type }) {
             setInputValue(event.target.value);
           }}
         />
-      </Form>
+      </StyledForm>
       <SearchSuggest inputValue={inputValue} fuzzyResults={fuzzyResults} />
     </>
   );
