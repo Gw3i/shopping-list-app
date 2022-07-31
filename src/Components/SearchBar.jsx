@@ -12,11 +12,14 @@ export default function SearchBar({ labelFor, labelText, placeholder, type }) {
   const createShoppingItems = useStore((state) => state.createShoppingItems);
   const fetchedProductItems = useStore((state) => state.fetchedProductItems);
 
+  function handleInputValueReset() {
+    setInputValue("");
+  }
+
+  //////////// Fuzzy Search
   const fuzzyResults = search(inputValue, fetchedProductItems.data, {
     keySelector: (obj) => obj.name.de,
   });
-
-  //////////// Fuzzy Search
 
   return (
     <>
@@ -39,7 +42,10 @@ export default function SearchBar({ labelFor, labelText, placeholder, type }) {
           }}
         />
       </StyledForm>
-      <SearchSuggest inputValue={inputValue} fuzzyResults={fuzzyResults} />
+      <SearchSuggest
+        fuzzyResults={fuzzyResults}
+        onInputValueReset={handleInputValueReset}
+      />
     </>
   );
 }
