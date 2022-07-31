@@ -14,20 +14,25 @@ export default function SearchSuggest({ fuzzyResults, onInputValueReset }) {
 
   return (
     <StyledUnorderedList>
-      {fuzzyResults.map((item) => {
-        return (
-          <StyledListItem key={item._id}>
-            <StyledListButton
-              onClick={() => {
-                createShoppingItems(item.name.de);
-                onInputValueReset();
-              }}
-            >
-              {item.name.de}
-            </StyledListButton>
-          </StyledListItem>
-        );
-      })}
+      {fuzzyResults
+        .filter((item) => {
+          return fuzzyResults.length === 0 ? console.log(item) : fuzzyResults;
+        })
+        .map((item) => {
+          return (
+            <StyledListItem key={item._id}>
+              <StyledListButton
+                onClick={() => {
+                  console.log(fuzzyResults);
+                  createShoppingItems(item.name.de);
+                  onInputValueReset();
+                }}
+              >
+                {item.name.de}
+              </StyledListButton>
+            </StyledListItem>
+          );
+        })}
     </StyledUnorderedList>
   );
 }

@@ -14,7 +14,6 @@ export default function ShoppingList() {
           <StyledListItem key={item._id}>
             <StyledListButton
               onClick={() => {
-                console.log(item._id);
                 deleteListItems(item._id);
               }}
             >
