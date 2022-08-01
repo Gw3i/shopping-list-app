@@ -45,6 +45,7 @@ export default function SearchBar({ labelFor, labelText, placeholder, type }) {
       <SearchSuggest
         fuzzyResults={fuzzyResults}
         onInputValueReset={handleInputValueReset}
+        inputValue={inputValue}
       />
     </>
   );
