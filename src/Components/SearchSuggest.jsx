@@ -10,6 +10,8 @@ export default function SearchSuggest({
   onInputValueReset,
   inputValue,
 }) {
+  const language = useStore((state) => state.language);
+
   const fetchProductList = useStore((state) => state.fetchProductList);
   const createShoppingItems = useStore((state) => state.createShoppingItems);
 
@@ -26,17 +28,19 @@ export default function SearchSuggest({
               <StyledListButton
                 onClick={() => {
                   console.log(fuzzyResults);
-                  createShoppingItems(item.name.de);
+                  createShoppingItems(item.name[language]);
                   onInputValueReset();
                 }}
               >
-                {item.name.de}
+                {item.name[language]}
               </StyledListButton>
             </StyledListItem>
           );
         })
       ) : inputValue ? (
-        <StyledParagraph>Nichts gefunden</StyledParagraph>
+        <StyledParagraph>
+          {language === "de" ? "Nichts gefunden" : "Nothing found"}
+        </StyledParagraph>
       ) : (
         ""
       )}

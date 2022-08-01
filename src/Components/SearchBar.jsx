@@ -18,7 +18,7 @@ export default function SearchBar({ labelFor, type }) {
 
   //////////// Fuzzy Search
   const fuzzyResults = search(inputValue, fetchedProductItems.data, {
-    keySelector: (obj) => obj.name.de,
+    keySelector: (obj) => obj.name[language],
   });
 
   return (

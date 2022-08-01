@@ -6,10 +6,12 @@ import useStore from "../hooks/useStore";
 export default function ShoppingList() {
   const shoppingItems = useStore((state) => state.shoppingItems);
   const deleteListItems = useStore((state) => state.deleteListItems);
+  const language = useStore((state) => state.language);
 
   return (
     <UnorderedList>
       {shoppingItems.map((item) => {
+        console.log(item.name[language]);
         return (
           <StyledListItem key={item._id}>
             <StyledListButton
@@ -17,7 +19,7 @@ export default function ShoppingList() {
                 deleteListItems(item._id);
               }}
             >
-              {item.name.de}
+              {item.name[language]}
             </StyledListButton>
           </StyledListItem>
         );
