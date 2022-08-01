@@ -6,15 +6,15 @@ import useStore from "../hooks/useStore";
 import SearchSuggest from "./SearchSuggest";
 import { search } from "fast-fuzzy";
 
-export default function SearchBar({ labelFor, labelText, placeholder, type }) {
+export default function SearchBar({ labelFor, type }) {
   const [inputValue, setInputValue] = useState("");
   const createShoppingItems = useStore((state) => state.createShoppingItems);
   const fetchedProductItems = useStore((state) => state.fetchedProductItems);
+  const language = useStore((state) => state.language);
 
   function handleInputValueReset() {
     setInputValue("");
   }
-
 
   //////////// Fuzzy Search
   const fuzzyResults = search(inputValue, fetchedProductItems.data, {
@@ -30,12 +30,18 @@ export default function SearchBar({ labelFor, labelText, placeholder, type }) {
           setInputValue("");
         }}
       >
-        <StyledLabel htmlFor={labelFor}>{labelText}</StyledLabel>
+        <StyledLabel htmlFor={labelFor}>
+          {language === "de"
+            ? "Was möchtest du einkaufen?"
+            : "What do you want to buy?"}
+        </StyledLabel>
         <StyledInput
           name={labelFor}
           id={labelFor}
           type={type}
-          placeholder={placeholder}
+          placeholder={
+            language === "de" ? "Tippe um zu suchen..." : "Type to search..."
+          }
           value={inputValue}
           onChange={(event) => {
             setInputValue(event.target.value);

@@ -7,7 +7,6 @@ export default function Header() {
   const language = useStore((state) => state.language);
   const setLanguage = useStore((state) => state.setLanguage);
 
-  console.log(language);
 
   return (
     <StyledHeader>
