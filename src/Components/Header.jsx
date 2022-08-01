@@ -2,12 +2,10 @@ import NavButton from "./NavButton";
 import StyledHeader from "./StyledHeader";
 import StyledTitel from "./StyledTitel";
 import useStore from "../hooks/useStore";
-import { useState } from "react";
 
 export default function Header() {
   const language = useStore((state) => state.language);
   const setLanguage = useStore((state) => state.setLanguage);
-  const [disabled, setDisabled] = useState(false);
 
   return (
     <StyledHeader>
@@ -16,21 +14,19 @@ export default function Header() {
       </StyledTitel>
       <nav>
         <NavButton
-          //disabled={disabled}
+          disabled={language === "de" ? true : false}
           type="button"
           onClick={() => {
             setLanguage("de");
-            //setDisabled(true);
           }}
         >
           DE
         </NavButton>
         <NavButton
-          //disabled={disabled}
+          disabled={language === "en" ? true : false}
           type="button"
           onClick={() => {
             setLanguage("en");
-            //setDisabled(false);
           }}
         >
           EN
