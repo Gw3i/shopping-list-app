@@ -4,8 +4,7 @@ import StyledInput from "./StyledInput";
 import { useState } from "react";
 import useStore from "../hooks/useStore";
 import SearchSuggest from "./SearchSuggest";
-
-const { search } = require("fast-fuzzy");
+import { search } from "fast-fuzzy";
 
 export default function SearchBar({ labelFor, labelText, placeholder, type }) {
   const [inputValue, setInputValue] = useState("");
