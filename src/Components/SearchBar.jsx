@@ -2,7 +2,7 @@ import StyledForm from "./StyledForm";
 import StyledLabel from "./StyledLabel";
 import StyledInput from "./StyledInput";
 import { useState } from "react";
-import useStore from "./useStore";
+import useStore from "../hooks/useStore";
 import SearchSuggest from "./SearchSuggest";
 
 const { search } = require("fast-fuzzy");

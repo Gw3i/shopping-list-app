@@ -1,7 +1,7 @@
 import UnorderedList from "./StyledUnorderedList";
 import StyledListItem from "./StyledListItem";
 import StyledListButton from "./StyledListButton";
-import useStore from "./useStore";
+import useStore from "../hooks/useStore";
 
 export default function ShoppingList() {
   const shoppingItems = useStore((state) => state.shoppingItems);

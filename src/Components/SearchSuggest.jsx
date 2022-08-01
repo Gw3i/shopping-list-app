@@ -1,4 +1,4 @@
-import useStore from "./useStore";
+import useStore from "../hooks/useStore";
 import { useEffect } from "react";
 import StyledUnorderedList from "./StyledUnorderedList";
 import StyledListItem from "./StyledListItem";
