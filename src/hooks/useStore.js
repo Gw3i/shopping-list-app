@@ -20,10 +20,7 @@ const useStore = create(
       createShoppingItems: (name) => {
         set((state) => {
           return {
-            shoppingItems: [
-              ...state.shoppingItems,
-              { name: { de: name }, _id: nanoid() },
-            ],
+            shoppingItems: [...state.shoppingItems, { name, _id: nanoid() }],
           };
         });
       },
@@ -42,7 +39,7 @@ const useStore = create(
       },
     };
   }
-  // ,{ name: "shoppingList" }
+  //,{ name: "shoppingList" }
   //)
 );
 
