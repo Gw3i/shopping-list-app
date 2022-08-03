@@ -16,6 +16,16 @@ const useStore = create(
           console.error(`Ups, fetchning went wrong: ${error}`);
         }
       },
+      categories: { data: [] },
+      addCategories: async (url) => {
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+          set({ categories: data });
+        } catch (error) {
+          console.error(`Ups, fetchning went wrong: ${error}`);
+        }
+      },
       shoppingItems: [],
       createShoppingItems: (name) => {
         set((state) => {
