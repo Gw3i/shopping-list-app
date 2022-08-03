@@ -12,7 +12,6 @@ export default function ShoppingList() {
   return (
     <UnorderedList>
       {shoppingItems.map((item) => {
-        console.log(item.name[language]);
         return (
           <StyledListItem key={item._id}>
             <StyledListButton

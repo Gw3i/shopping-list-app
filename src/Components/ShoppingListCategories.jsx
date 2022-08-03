@@ -5,6 +5,7 @@ import StyledListItem from "./StyledListItem";
 import StyledUnorderedList from "./StyledUnorderedList";
 
 export default function ShoppingListCategories() {
+  const language = useStore((state) => state.language);
   const categories = useStore((state) => state.categories);
   const addCategories = useStore((state) => state.addCategories);
 
@@ -14,11 +15,11 @@ export default function ShoppingListCategories() {
 
   return (
     <>
-      <StyledUnorderedList>
+      <StyledUnorderedList variant="category">
         {categories.data.map((category) => {
           return (
-            <StyledListItem key={category._id}>
-              {category.name.de}
+            <StyledListItem variant="category" key={category._id}>
+              {category.name[language]}
             </StyledListItem>
           );
         })}
