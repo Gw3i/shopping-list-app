@@ -27,7 +27,7 @@ export default function SearchSuggest({
             <StyledListItem key={item._id}>
               <StyledListButton
                 onClick={() => {
-                  createShoppingItems(item.name);
+                  createShoppingItems(item.name, item.category);
                   onInputValueReset();
                 }}
               >

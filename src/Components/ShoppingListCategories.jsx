@@ -22,9 +22,6 @@ export default function ShoppingListCategories() {
     <>
       <StyledUnorderedList variant="category">
         {categories.data.map((category) => {
-          const fruitsCategory = category._id.includes("Ma==");
-          const breadCategory = category._id.includes("MQ==");
-
           return (
             <StyledListItem
               key={category._id}
@@ -38,13 +35,13 @@ export default function ShoppingListCategories() {
               }
               <StyledCollabsedText display={isShown ? "shown" : "hidden"}>
                 <p>Text to collapse</p>
+                <ShoppingList categoryId={category._id} />
               </StyledCollabsedText>
               {/* if shoppingItem._id === category._id show shoppingItem  */}
             </StyledListItem>
           );
         })}
       </StyledUnorderedList>
-      <ShoppingList />
     </>
   );
 }

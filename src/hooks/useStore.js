@@ -27,10 +27,13 @@ const useStore = create(
         }
       },
       shoppingItems: [],
-      createShoppingItems: (name) => {
+      createShoppingItems: (name, category) => {
         set((state) => {
           return {
-            shoppingItems: [...state.shoppingItems, { name, _id: nanoid() }],
+            shoppingItems: [
+              ...state.shoppingItems,
+              { name, _id: nanoid(), category },
+            ],
           };
         });
       },
