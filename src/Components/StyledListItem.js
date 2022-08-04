@@ -6,7 +6,7 @@ const StyledListItem = styled.li`
     css`
       font-size: 1.4rem;
       font-weight: bold;
-      text-decoration: underline;
+
       ${({ arrow = "default" }) =>
         arrow === "default" &&
         css`

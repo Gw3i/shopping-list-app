@@ -8,7 +8,6 @@ export default function ShoppingList() {
   const deleteListItems = useStore((state) => state.deleteListItems);
   const language = useStore((state) => state.language);
 
-  console.log(shoppingItems);
   return (
     <UnorderedList>
       {shoppingItems.map((item) => {
