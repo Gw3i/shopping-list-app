@@ -27,8 +27,7 @@ export default function SearchSuggest({
             <StyledListItem key={item._id}>
               <StyledListButton
                 onClick={() => {
-                  console.log(fuzzyResults);
-                  createShoppingItems(item.name[language]);
+                  createShoppingItems(item.name, item.category);
                   onInputValueReset();
                 }}
               >

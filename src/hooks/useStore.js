@@ -16,13 +16,23 @@ const useStore = create(
           console.error(`Ups, fetchning went wrong: ${error}`);
         }
       },
+      categories: { data: [] },
+      addCategories: async (url) => {
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+          set({ categories: data });
+        } catch (error) {
+          console.error(`Ups, fetchning went wrong: ${error}`);
+        }
+      },
       shoppingItems: [],
-      createShoppingItems: (name) => {
+      createShoppingItems: (name, category) => {
         set((state) => {
           return {
             shoppingItems: [
               ...state.shoppingItems,
-              { name: { de: name }, _id: nanoid() },
+              { name, _id: nanoid(), category },
             ],
           };
         });
@@ -42,7 +52,7 @@ const useStore = create(
       },
     };
   }
-  // ,{ name: "shoppingList" }
+  //,{ name: "shoppingList" }
   //)
 );
 

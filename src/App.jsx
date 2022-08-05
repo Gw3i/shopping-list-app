@@ -3,6 +3,7 @@ import StyledMain from "./Components/StyledMain";
 import ShoppingList from "./Components/ShoppingList";
 import SearchBar from "./Components/SearchBar";
 import Header from "./Components/Header";
+import ShoppingListCategories from "./Components/ShoppingListCategories";
 
 function App() {
   return (
@@ -10,11 +11,8 @@ function App() {
       <GlobalStyle />
       <Header />
       <StyledMain>
-        <ShoppingList />
-        <SearchBar
-          labelFor="whatShopping"
-          type="search"
-        />
+        <ShoppingListCategories />
+        <SearchBar labelFor="whatShopping" type="search" />
       </StyledMain>
     </>
   );
