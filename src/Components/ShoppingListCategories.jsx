@@ -9,14 +9,15 @@ export default function ShoppingListCategories() {
   const language = useStore((state) => state.language);
   const categories = useStore((state) => state.categories);
   const addCategories = useStore((state) => state.addCategories);
-  const shoppingItems = useStore((state) => state.shoppingItems);
   const [isShown, setIsShown] = useState(true);
-
-  console.log(isShown);
 
   useEffect(() => {
     addCategories("https://fetch-me.vercel.app/api/shopping/categories");
   }, [addCategories]);
+
+  function handleCollapse(id) {
+    setIsShown(() => ({ ...isShown, [id]: !isShown[id] }));
+  }
 
   return (
     <>
@@ -26,18 +27,18 @@ export default function ShoppingListCategories() {
             <StyledListItem
               key={category._id}
               variant="category"
-              arrow={isShown ? "toBottom" : "default"}
+              arrow={isShown[category._id] ? "default" : "toBottom"}
             >
               {
-                <button onClick={() => setIsShown(!isShown)}>
+                <button onClick={() => handleCollapse(category._id)}>
                   {category.name[language]}
                 </button>
               }
-              <StyledCollabsedText display={isShown ? "shown" : "hidden"}>
-                <p>Text to collapse</p>
+              <StyledCollabsedText
+                display={isShown[category._id] ? "hidden" : "show"}
+              >
                 <ShoppingList categoryId={category._id} />
               </StyledCollabsedText>
-              {/* if shoppingItem._id === category._id show shoppingItem  */}
             </StyledListItem>
           );
         })}
