@@ -3,7 +3,8 @@ import useStore from "../hooks/useStore";
 import { useEffect, useState } from "react";
 import StyledListItem from "./StyledListItem";
 import StyledUnorderedList from "./StyledUnorderedList";
-import StyledCollabsedText from "./StyledCollabsedText";
+import StyledCollabsedContainer from "./StyledCollabsedContainer";
+import StyledCategoryButton from "./StyledCategoryButton";
 
 export default function ShoppingListCategories() {
   const language = useStore((state) => state.language);
@@ -24,21 +25,20 @@ export default function ShoppingListCategories() {
       <StyledUnorderedList variant="category">
         {categories.data.map((category) => {
           return (
-            <StyledListItem
-              key={category._id}
-              variant="category"
-              arrow={isShown[category._id] ? "default" : "toBottom"}
-            >
+            <StyledListItem key={category._id} variant="category">
               {
-                <button onClick={() => handleCollapse(category._id)}>
+                <StyledCategoryButton
+                  onClick={() => handleCollapse(category._id)}
+                  arrow={isShown[category._id] ? "default" : "toBottom"}
+                >
                   {category.name[language]}
-                </button>
+                </StyledCategoryButton>
               }
-              <StyledCollabsedText
+              <StyledCollabsedContainer
                 display={isShown[category._id] ? "hidden" : "show"}
               >
                 <ShoppingList categoryId={category._id} />
-              </StyledCollabsedText>
+              </StyledCollabsedContainer>
             </StyledListItem>
           );
         })}

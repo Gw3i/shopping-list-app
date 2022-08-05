@@ -6,22 +6,7 @@ const StyledListItem = styled.li`
     css`
       font-size: 1.4rem;
       font-weight: bold;
-
-      ${({ arrow = "default" }) =>
-        arrow === "default" &&
-        css`
-          &::before {
-            content: "▸ ";
-          }
-        `}
-
-      ${({ arrow }) =>
-        arrow === "toBottom" &&
-        css`
-          &::before {
-            content: "▾ ";
-          }
-        `}
+      margin: 20px 0;
     `}
 `;
 

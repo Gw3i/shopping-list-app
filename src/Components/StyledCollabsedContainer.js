@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
 
-const StyledCollabsedText = styled.p`
+const StyledCollabsedContainer = styled.div`
+  padding: 10px 0;
+
   ${({ display }) =>
     display === "shown" &&
     css`
@@ -13,4 +15,4 @@ const StyledCollabsedText = styled.p`
     `}
 `;
 
-export default StyledCollabsedText;
+export default StyledCollabsedContainer;
